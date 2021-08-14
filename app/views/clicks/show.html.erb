@@ -1,4 +1,83 @@
-<div>
-  <%= @click.click %>
-  <%= link_to("Button #{@click.id}", click_path(@click), method: :put) %>
+<div id="app" class="container-sm">
+  
+  <div class="jumie c">
+    <h1><%= @click.city %></h1>
+    <div id="counter" class="rot-c"><%= @click.click %></div>
+  </div>
+  <%= link_to "", click_path(@click), method: :put, id: 'click-link' %> 
 </div>
+
+<style type="text/css">
+#app,body,html {
+    height: 100%;
+    overflow: hidden
+}
+body {
+    margin: 0;
+    background-color: #bdaa90;
+    -ms-user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    font-family: Nunito,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative
+}
+.jumie {
+  height: 0;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 800px;
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  touch-action: manipulation;
+  text-align: center;
+  color: #fff;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #000;
+  font-weight: 900;
+  font-size: 80px;
+  word-wrap: break-word
+}
+.c {
+  background-image: url('/assets/pop-jumie-c.png');
+}
+.op {
+  background-image: url('/assets/pop-jumie-op.png');
+}
+@media(min-width: 1000px) {
+  .jumie {
+      font-size:40px;
+      -webkit-text-stroke-width: 1.5px
+  }
+}
+h1 {
+  font-size: 70px;
+}
+</style>
+
+<script type="text/javascript">
+  $(document).mouseup(function() {
+    $('.jumie').removeClass("op").addClass("c");
+  });
+  $(document).mousedown(function() {
+    $('.jumie').removeClass("c").addClass("op");
+    $('#click-link')[0].click();
+    $('#counter').html(function(i, val) { return +val+1 });
+  });
+  $(document).keyup(function() {
+    $('.jumie').removeClass("op").addClass("c");
+  });
+  $(document).keydown(function() {
+    $('.jumie').removeClass("c").addClass("op");
+    $('#click-link')[0].click();
+    $('#counter').html(function(i, val) { return +val+1 });
+  });
+</script>

@@ -9,6 +9,5 @@ class ClicksController < ApplicationController
   def update
     @click = Click.find(params[:id])
     @click.update!(click: @click.click + 1)
-    redirect_to click_path
   end
 end
